@@ -1,10 +1,16 @@
 const express = require('express');
 const hbs = require('hbs');
-const app = express();
+const app = express()
+const path = require('path');
+const bodyParser = require('body-parser');
 
-app.set('view engine', 'hbs');
-app.set('views', __dirname + '/view');
-app.use(express.static(__dirname + '/public'));
-hbs.registerPartials(__dirname + '/view/partials');
+hbs.registerPartials(__dirname + '/views/partials');
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
 
 module.exports = {hbs,app}
