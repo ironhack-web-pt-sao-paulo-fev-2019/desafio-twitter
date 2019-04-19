@@ -1,0 +1,22 @@
+{
+  "name": "desafio-twitter",
+  "version": "1.0.0",
+  "description": "Neste projeto, você deverá entregar um site de gerenciamento de twits. A fonte de dados será o site do `Twitter`.",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ironhack-web-pt-sao-paulo-fev-2019/desafio-twitter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ironhack-web-pt-sao-paulo-fev-2019/desafio-twitter/issues"
+  },
+  "homepage": "https://github.com/ironhack-web-pt-sao-paulo-fev-2019/desafio-twitter#readme"
+}
