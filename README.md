@@ -10,7 +10,7 @@ Para este projeto, você deverá utilizar:
 - Módulo [twitter](https://www.npmjs.com/package/twitter);
 - `.gitignore` para evitar que alguns arquivos ou pastas sejam versionados; 
 - [handlebars](https://handlebarsjs.com/), para as views;
-- Api de notícias do `Twitter`
+- Api do `Twitter`
 
 Importante: Você deverá proteger suas credenciais. Elas não podem aparecer em seu código no github, para isso, utilize os arquivos:
 
