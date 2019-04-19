@@ -37,4 +37,4 @@ https://developer.twitter.com/
 
 O projeto deve seguir o diagrama abaixo, conforme conversamos em sala de aula:
 
-
+![Fluxo](https://github.com/ironhack-web-pt-sao-paulo-fev-2019/desafio-twitter/blob/master/doc/images/diagrama-twitter.png)
