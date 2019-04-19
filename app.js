@@ -1,9 +1,4 @@
-var express = require('express'),
-    app = express(),
-    hbs = require('hbs');
-
-app.set('view engine', 'hbs');
-app.set('views', __dirname + '/views');
+const { app } = require('./config');
 
 app.get('/', (req,res) => {
     res.render('index')
