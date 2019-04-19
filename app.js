@@ -1,4 +1,5 @@
-const path = require('path')
+const path = require('path');
+const app = require('./config');
 require('dotenv')
 .config({
     path: path.resolve(process.cwd(),'../environment/.env')
