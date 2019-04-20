@@ -20,8 +20,8 @@ var client = new Twitter({
 
     consumer_key: 'bwcKhoXjKc8jOmTLCR97Gc11J',
     consumer_secret: 'u9jK0WqbuHR5McKvEgEfnfo9WQOXrlJUixMCgyLvQXaxu2qWJP',
-    access_token_key: '1088533182679519232-H5EoI9emQqiUcemRJKge6CKWulgWo6 ',
-    access_token_secret: 'hT3oBrQIn58A7zC3d5v5O1fBuAebaFKDqPmG1pIBzCK3n '
+    access_token_key: '1088533182679519232-H5EoI9emQqiUcemRJKge6CKWulgWo6',
+    access_token_secret: 'hT3oBrQIn58A7zC3d5v5O1fBuAebaFKDqPmG1pIBzCK3n'
 
 });
 
@@ -29,13 +29,10 @@ app.get('/result', function (req, res, next) {
 
     var query = req.query.keyword;
 
-    client.get('result', { q: query }, function (error, tweets, response) {
+    client.get('search/tweets', { q: query }, function (error, tweets, response) {
         const arraySearch = tweets.statuses;
 
-        //res.send(arraySearch);
-        // res.render('search', { arraySearch })
-
-        console.log(arraySearch)
+        res.send(JSON.stringify(arraySearch));
     });
 
 });
