@@ -61,6 +61,16 @@ app.get('/tweets', function(req, res, next) {
      
   });
 
+  app.get('/search-user', function(req, res, next) {
+
+    client.get('users/search.json', {q: 'Wilkor'}, function(error, tweets, response) {
+       
+       res.send(tweets)
+     });
+     
+  });
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
