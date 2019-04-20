@@ -1,19 +1,20 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-var passport = require('passport');
-var session = require('express-session');
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const passport = require('passport');
+const session = require('express-session');
+const hbs = require('hbs');
 
-var index = require('./routes/index');
-var users = require('./routes/users');
-var auth = require('./routes/auth');
-var tweets = require('./routes/searchTweets');
-var Twitter = require('twitter');
-var app = express();
+const index = require('./routes/index');
+const users = require('./routes/users');
+const auth = require('./routes/auth');
+const tweets = require('./routes/searchTweets');
+const Twitter = require('twitter');
+const app = express();
 
 
 mongoose.Promise = global.Promise;
@@ -23,16 +24,19 @@ mongoose.connect('mongodb://localhost/node-passport-social', { useMongoClient: t
   .catch((err) => console.error(err));
   
   // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+
+
+app.set('view engine', 'hbs');
+app.set('views', __dirname + '/views');
+app.use(express.static(__dirname + '/public'));
+hbs.registerPartials(__dirname + '/views/partials');
+
 
 app.use(session({ secret: 'blah', name: 'id' }))
 app.use(passport.initialize());
@@ -54,9 +58,11 @@ var client = new Twitter({
 
 app.get('/tweets', function(req, res, next) {
 
-    client.get('search/tweets', {q: '#bolsonaro'}, function(error, tweets, response) {
-       
-       res.send(tweets)
+     const query = req.query.hash
+
+    client.get('search/tweets', {q:query}, function(error, tweets, response) {
+        const arraySearch = tweets.statuses
+        res.render('search',{arraySearch})
      });
      
   });
