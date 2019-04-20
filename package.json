@@ -30,6 +30,8 @@
     "hbs": "^4.0.4",
     "mongoose": "^5.5.2",
     "mongoose-findorcreate": "^3.0.0",
+    "node-twitter-api": "^1.8.0",
+    "nodemon": "^1.18.11",
     "passport": "^0.4.0",
     "passport-twitter": "^1.0.4",
     "twitter": "^1.7.1"
