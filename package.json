@@ -23,6 +23,7 @@
   "homepage": "https://github.com/ironhack-web-pt-sao-paulo-fev-2019/desafio-twitter#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "connect-ensure-login": "^0.1.1",
     "cookie-parser": "^1.4.4",
     "dotenv": "^7.0.0",
     "express": "^4.16.4",

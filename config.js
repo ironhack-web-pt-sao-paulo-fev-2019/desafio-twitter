@@ -7,20 +7,25 @@ const passport = require('passport'),
   TwitterStrategy = require('passport-twitter').Strategy;
 const bodyParser = require("body-parser");
 const routes = require('./routes');
+const cookieParser = require('cookie-parser');
 const UserModel = require('./models/userModel');
 const findOrCreate = require('mongoose-findorcreate');
 const app = require('./routes/index');
 require('dotenv').config()
+
 app.set('view engine', 'hbs');
 app.set('views', `${__dirname}/views`);
 app.use(express.static(`${__dirname}/public`));
 hbs.registerPartials(`${__dirname}/views/partials`);
-
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(cookieParser());
+app.use(session({ secret:'watchingferries', resave: true, saveUninitialized: true }));
 app.use(
   bodyParser.urlencoded({
     extended: true,
   }),
 );
+
 
 mongoose.connect(`mongodb://localhost/${dbName}`, (error) => {
   if (error) {
@@ -47,7 +52,7 @@ passport.use(new TwitterStrategy({
   function (token, tokenSecret, profile, done) {
     userData = {
       userid: profile.id,
-      name: profile.username, 
+      name: profile.username,
       displayName: profile.displayName,
     }
     UserModel.findOne({
@@ -57,6 +62,12 @@ passport.use(new TwitterStrategy({
         return done(err);
       }
       done(createOrReturn(user, userData), user);
+    });
+    passport.serializeUser(function (user, done) {
+      done(null, user);
+    });
+    passport.deserializeUser(function (obj, done) {
+      done(null, obj);
     });
   }
 ));
@@ -71,10 +82,9 @@ function createOrReturn(user, username) {
         return username;
       }
     })
+  } else {
+    return user;
   }
-    else {
-      return user;
-}
 }
 
 module.exports = {
