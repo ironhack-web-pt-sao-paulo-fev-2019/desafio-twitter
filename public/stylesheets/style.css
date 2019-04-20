@@ -1,5 +1,5 @@
 body {
-  padding: 50px;
+  padding: 10px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -13,7 +13,137 @@ a {
 }
 
 .btn {
-  width: 100%;
+  width: 50%;
   height: 50px;
   font-size: 24px;
+}
+
+.head{
+
+  display:flex;
+  justify-content: center;
+  height:90px;
+  background:white;
+  
+  
+  
+  
+}
+
+body{
+
+background:#f5f5f5;
+}
+
+.logo-tny{
+
+margin-top:15px;
+width:100%;
+height:100px;
+background-image:url('../images/new-york-times-logo-png-transparent.png');
+background-repeat: no-repeat;
+background-size:24%;
+
+}
+
+.form-tny{
+
+display: flex;
+justify-content: center;
+align-items: center;
+height: 200px;
+
+}
+
+body {
+font-family: Arial, Helvetica, sans-serif;
+}
+
+.flip-card {
+background-color: transparent;
+width: 300px;
+height: 300px;
+perspective: 1000px;
+}
+
+.flip-card-inner {
+position: relative;
+width: 100%;
+height: 100%;
+text-align: center;
+transition: transform 0.6s;
+transform-style: preserve-3d;
+box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+position: absolute;
+width: 100%;
+height: 100%;
+backface-visibility: hidden;
+}
+
+.flip-card-front {
+background-color: #bbb;
+color: black;
+z-index: 2;
+}
+
+.flip-card-back {
+background-color: #2980b9;
+color: white;
+transform: rotateY(180deg);
+z-index: 1;
+}
+
+.notice-result-api{
+padding-left: 58px;
+padding-bottom:5px; 
+ display: flex;
+ flex-direction: row;   
+ flex-wrap: wrap;
+
+}
+.card{
+
+ margin: 5px 5px 5px 5px;
+
+}
+
+.header-infor-notice{
+
+
+padding: 5px 5px 5px 5px;
+
+}
+
+.pageFooter {
+
+margin-top:389px;
+background-color: #252527;
+color: #fff;
+padding: 15px 20px;
+width: 100%;
+height: 4px  
+}
+
+#input-search {
+border-radius: 25px;
+border: 1px solid #252527;
+padding: 20px; 
+width:300px;
+height: 15px; 
+}
+
+.all-results-search{
+
+  display: flex;
+  flex-wrap: wrap;
+ margin-left: 100px;
+
+
 }

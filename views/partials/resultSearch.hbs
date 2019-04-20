@@ -1,3 +1,12 @@
-<h4>Nome:{{this.user.name}}</h4>
-<img src="{{this.user.profile_image_url}}">
-<h6>{{this.text}}</h6>
+<div class="card" style="width: 16rem;">
+    <img class="card-img-top" src="{{this.user.profile_image_url}}" alt="Card image cap">
+     <div class="card-body">
+    <h5 class="card-title">Nome: {{this.user.name}}
+        <hr>
+    </h5>
+    <p class="card-text">Tweet:{{this.text}}</p>
+ 
+  </div>
+</div>
+<br>
+

@@ -69,9 +69,11 @@ app.get('/tweets', function(req, res, next) {
 
   app.get('/search-user', function(req, res, next) {
 
-    client.get('users/search.json', {q: 'Wilkor'}, function(error, tweets, response) {
-       
-       res.send(tweets)
+    const query = req.query.hash
+    client.get('users/search.json', {q: query}, function(error, tweets, response) {
+      const arraySearch = tweets
+      res.render('userSearch',{arraySearch})
+      //res.send(arraySearch)
      });
      
   });
