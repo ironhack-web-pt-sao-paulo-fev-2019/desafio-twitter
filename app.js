@@ -2,12 +2,18 @@ const express = require('express'),
     app = express(),
     hbs = require('hbs'),
     Twitter = require('twitter');
+    
+    require('dotenv').config();
 
 // SET UP
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
 hbs.registerPartials(__dirname + '/views/partials');
+
+// DOTENV
+
+
 
 // ROUTES
 app.get('/', (req, res) => {
@@ -18,10 +24,10 @@ app.get('/', (req, res) => {
 
 var client = new Twitter({
 
-    consumer_key: 'bwcKhoXjKc8jOmTLCR97Gc11J',
-    consumer_secret: 'u9jK0WqbuHR5McKvEgEfnfo9WQOXrlJUixMCgyLvQXaxu2qWJP',
-    access_token_key: '1088533182679519232-H5EoI9emQqiUcemRJKge6CKWulgWo6',
-    access_token_secret: 'hT3oBrQIn58A7zC3d5v5O1fBuAebaFKDqPmG1pIBzCK3n'
+    consumer_key: process.env.TWITTER_CONSUMER_KEY,
+    consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+    access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
+    access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 
 });
 
