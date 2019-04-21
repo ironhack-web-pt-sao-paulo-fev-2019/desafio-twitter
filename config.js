@@ -17,9 +17,15 @@ app.set('view engine', 'hbs');
 app.set('views', `${__dirname}/views`);
 app.use(express.static(`${__dirname}/public`));
 hbs.registerPartials(`${__dirname}/views/partials`);
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use(cookieParser());
-app.use(session({ secret:'watchingferries', resave: true, saveUninitialized: true }));
+app.use(session({
+  secret: 'watchingferries',
+  resave: true,
+  saveUninitialized: true
+}));
 app.use(
   bodyParser.urlencoded({
     extended: true,
@@ -58,20 +64,13 @@ passport.use(new TwitterStrategy({
     UserModel.findOne({
       username: profile.username
     }, function (err, user) {
-      if (err) {
+      if (err) { 
         return done(err);
       }
       done(createOrReturn(user, userData), user);
     });
-    passport.serializeUser(function (user, done) {
-      done(null, user);
-    });
-    passport.deserializeUser(function (obj, done) {
-      done(null, obj);
-    });
   }
 ));
-
 function createOrReturn(user, username) {
   if (user == null) {
     UserModel.create(username, (error) => {
@@ -86,6 +85,20 @@ function createOrReturn(user, username) {
     return user;
   }
 }
+
+
+passport.serializeUser(function(profile, done) {
+  console.log('serializeUser: ' + profile._id);
+  done(null, profile._id);
+});
+passport.deserializeUser(function(id, done) {
+  UserModel.findById(_id, function(err, user){
+    console.log(user);
+      if(!err) done(null, user);
+      else done(err, null);
+    });
+});
+
 
 module.exports = {
   express,

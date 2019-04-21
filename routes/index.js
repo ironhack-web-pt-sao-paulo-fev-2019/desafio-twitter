@@ -9,7 +9,6 @@ const cookieParser = require('cookie-parser');
 
 app.use(cookieParser());
 app.use(passport.initialize());
-app.use(passport.session());
 
 app.use(session({
   secret: 's3cr3t',
@@ -20,16 +19,21 @@ app.use(session({
 
 app.use(passport.session());
 
+app.get('/logoff',
+  function (request, response) {
+    request.logout();
+    response.render('login');
+  });
+
 app.get('/', (request, response) => {
   response.render('index');
 });
 
 app.get('/loged', (request, response) => {
-  response.cookie('twitter-session-cookie', new Date());
-  if (request.cookies['twitter-session-cookie']) {
+  if (verifyLoged(request) === true) {
     response.render('loged');
   } else {
-    response.redirect('/');
+    response.redirect('/login');
   }
 });
 
@@ -37,18 +41,21 @@ app.get('/login', (request, response) => {
   response.render('login');
 });
 
-app.get('/login/twitter', passport.authenticate('twitter'));
-
 app.get('/login/callback',
   passport.authenticate('twitter', {
     successRedirect: '/loged',
-    failureRedirect: '/login'
+    failureRedirect: '/login',
   }));
 
-app.get('/logoff',
-  function (req, res) {
-    res.clearCookie('twitter-session-cookie');
-    res.redirect('/');
+app.get('/login/twitter', passport.authenticate('twitter'));
+
+function verifyLoged(request) {
+  let a = JSON.stringify(request.session);
+  a = a.split(',')[5];
+  if (a === undefined) {
+    return false;
   }
-);
+  return true;
+}
+
 module.exports = app;
