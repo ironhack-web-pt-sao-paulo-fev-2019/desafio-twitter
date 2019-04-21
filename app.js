@@ -3,20 +3,27 @@ const hbs = require('hbs');
 
 const app = express();
 
-app.set('view_engine', 'hbs');
 app.set('views', `${__dirname}/views`);
+app.set('view engine', 'hbs');
 
 // Rotas públicas (acesso sem autenticação)
 app.get('/', (request, response) => {
-  response.send('HOME: Esta é a rota principal, ela precisa renderizar um template com um form de busca');
+  // Esta é a rota principal, é a página que aparece o formulário de busca
+  // A linha abaixo quer dizer: responda renderizando o template "index.hbs" que está dentro da pasta views
+  response.render('index');
 });
 
 app.get('/search-results', (request, response) => {
-  response.send('SEARCH RESULTS: Esta é a rota com o resultado da busca de acordo com os criterios escolhidos na capa do site.');
+  const query = request.query.query;
+  // aqui deve ter o código para buscar no twitter por *query* (sem asterisco)
+  // o resultado deve ser guardado na variável abaixo e, sem seguida, passada para ser renderizado como resultado
+  const result = {};
+  response.render('search-results', { query, result } );
 });
 
-app.get('/user-detail/:username', (request, response) => {
-  response.send('user-detail: Esta é a rota com os tuwits de um determinado usuário.');
+app.get('/user/:username', (request, response) => {
+  const { username } = request.params;
+  response.send(`Esta é a rota com os twits do usuário ${username}.`);
 });
 
 // Rotas privadas (acessa apenas para quem está autenticado)
