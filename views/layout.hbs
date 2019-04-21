@@ -17,21 +17,90 @@
 <body>
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/">{{user.name}}</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+{{!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+ <a class="navbar-brand" href="#"><img src="/img/twitter-logo-1.png" width="5%"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
 
+  <div id="navbarNavCustom">
+   <div class="collapse navbar-collapse" id="navbarNav">
+
+
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Search</a>
+      </li>
+    
+        {{#if userid}}
+
+             <li class="nav-item">
+        <a class="nav-link" href="/post">Post Tweet</a>
+      </li>
+           <li class="nav-item">
+        <a class="nav-link" href="/auth/twitter">See my Tweets</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/auth/logout">logout</a>
+      </li>
+     <li class="nav-item">
+        <a class="nav-link disabled" href="#"><img src="{{user.photo}}" class="img-photo" ></a>
+      </li>
+
+         {{else}}
+  <li class="nav-item">
+        <a class="nav-link" href="/auth/twitter">Login</a>
+      </li>
+
+         {{/if}}
+    
+   
+    </ul>
   </div>
-</nav>
+</div>
+
+</nav> --}}
+
+ <div class="header">
+<div class="header__container">
+<div class="header__inner">
+<div class="header__left">
+<a class="logo" href="/" title="Home">
+<span class="Icon Icon--logo Icon--large"></span></a>
+<nav>
+<li><a href="https://developer.twitter.com/en.html" title="App-IronTweet">App-IronTweet</a>
+</li>
+<li class="menu__link " aria-activedescendant="" aria-expanded="false" aria-haspopup="true" aria-controls="">
+<span class="no-highlight no-cursor-style"><a href="/post">Post Tweet</a></span></li>
+<li class="menu__link " aria-activedescendant="" aria-expanded="false" aria-haspopup="true" aria-controls="">
+  <span class="no-highlight no-cursor-style"><a href="/home">Search</a> </span></li>
+
+</nav></div><div class="header__right">
+<nav>
+  {{#if userid}}
+<li><a title="Dashboard" href="/auth/logout">logout</a></li>
+{{else}}
+<li><a title="Dashboard" href="/auth/twitter">login</a></li>
+{{/if}}  
+<li class="menu__link " aria-activedescendant="" aria-expanded="false" aria-haspopup="true" aria-controls="">
+  <span class="no-highlight no-cursor-style">{{user.name}}</span>
+  
+  </nav>
+  <nav>
+  <li class="menu__link account__nav" aria-activedescendant="" aria-expanded="false" aria-haspopup="true" aria-controls="">
+    <span class="no-highlight no-cursor-style">
+      
+  <div class="header__account">
+    <img alt="" class="User-profileImage" src="{{user.photo}}">
+    </div></span></li></nav></div></div></div></div>
+    
+
   
   {{{ body }}}
 
 
 
- 
- 
+
 </body>
 </html>

@@ -1,38 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://abs.twimg.com/favicons/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-<script>
-function changeAction(action_name){
-
- if( action_name=="tweets" ) {
-        document.formSearch.action = "/tweets";
-    }
-  else if( action_name=="hashtag" ) {
-        document.formSearch.action = "/tweets";
-    }
-
-    else if( action_name=="user" ) {
-      document.formSearch.action = "/search-user";
-    }
-
-
-}
-
-</script>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+  <title>App-Twitter</title>
+</head>
+<body>
 
 
-<h4>busca:</h4>
-<form name="formSearch" action="/tweets" method="GET">
+{{!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-  <input type="text" name="hash" value="">
- <input type="submit" value="GO"> <br>
+ <a class="navbar-brand" href="#"><img src="/img/twitter-logo-1.png" width="5%"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-
-</form>
- <input type="radio" name="opt" value="tweets"  onchange="changeAction('tweets');">  tweets
- <input type="radio" name="opt" value="hashtag" onchange="changeAction('hashtag');" > hashtag
- <input type="radio" name="opt" value="user"    onchange="changeAction('user');"> user
+  <div id="navbarNavCustom">
+   <div class="collapse navbar-collapse" id="navbarNav">
 
 
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Search</a>
+      </li>
+    
+        {{#if userid}}
 
- <div class="access-twitter">
- <a href="/auth/twitter"> <button  class="a btn btn-info">Entrar com Twitter</button></a>
- </div>
+             <li class="nav-item">
+        <a class="nav-link" href="/post">Post Tweet</a>
+      </li>
+           <li class="nav-item">
+        <a class="nav-link" href="/auth/twitter">See my Tweets</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/auth/logout">logout</a>
+      </li>
+     <li class="nav-item">
+        <a class="nav-link disabled" href="#"><img src="{{user.photo}}" class="img-photo" ></a>
+      </li>
+
+         {{else}}
+  <li class="nav-item">
+        <a class="nav-link" href="/auth/twitter">Login</a>
+      </li>
+
+         {{/if}}
+    
+   
+    </ul>
+  </div>
+</div>
+
+</nav> --}}
+
+ <div class="header">
+<div class="header__container">
+<div class="header__inner">
+<div class="header__left">
+<a class="logo" href="/" title="Home">
+<span class="Icon Icon--logo Icon--large"></span></a>
+
+<nav>
+     {{#if userid}}
+<li><a href="https://developer.twitter.com/en.html" title="App-IronTweet">App-IronTweet</a>
+</li>
+
+<li class="menu__link " aria-activedescendant="" aria-expanded="false" aria-haspopup="true" aria-controls="">
+<span class="no-highlight no-cursor-style"><a href="/post">Post Tweet</a></span></li>
+<li class="menu__link " aria-activedescendant="" aria-expanded="false" aria-haspopup="true" aria-controls="">
+  <span class="no-highlight no-cursor-style"><a href="/home">Search</a> </span></li><li class="menu__link " aria-activedescendant="" aria-expanded="false" aria-haspopup="true" aria-controls="">
+<span class="no-highlight no-cursor-style">Docs</span></li>
+<li class="menu__link " aria-activedescendant="" aria-expanded="false" aria-haspopup="true" aria-controls=""><span class="no-highlight no-cursor-style">More</span></li>
+</nav></div><div class="header__right">
+<nav>
+ 
+<li><a title="logout" href="/auth/logout">logout</a></li>
+{{else}}
+<li><a title="login" href="/auth/twitter">login</a></li>
+
+<li class="menu__link " aria-activedescendant="" aria-expanded="false" aria-haspopup="true" aria-controls="">
+  <span class="no-highlight no-cursor-style">{{user.name}}</span>
+  
+  </nav>
+  <nav>
+  <li class="menu__link account__nav" aria-activedescendant="" aria-expanded="false" aria-haspopup="true" aria-controls="">
+    <span class="no-highlight no-cursor-style">
+      
+  <div class="header__account">
+    <img alt="" class="User-profileImage" src="{{user.photo}}">
+    </div></span></li></nav></div></div></div></div>
+    {{/if}}  
+
+  
+  {{{ body }}}
+
+
+
+
+</body>
+</html>

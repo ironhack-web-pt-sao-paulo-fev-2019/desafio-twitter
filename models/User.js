@@ -3,7 +3,9 @@ var mongoose = require('mongoose');
 var UserSchema = new mongoose.Schema({
   name: String,
   userid: String,
+  photo: String,
   updated_at: { type: Date, default: Date.now },
+ 
 });
 
 UserSchema.statics.findOrCreate = require("find-or-create");

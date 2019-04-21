@@ -1,0 +1,30 @@
+
+<script>
+function changeAction(action_name){
+
+ if( action_name=="tweets" ) {
+        document.formSearch.action = "/tweets";
+    }
+  else if( action_name=="hashtag" ) {
+        document.formSearch.action = "/tweets";
+    }
+
+    else if( action_name=="user" ) {
+      document.formSearch.action = "/search-user";
+    }
+
+
+}
+
+</script>
+
+    <div class="form-tny">
+        <form name="formSearch"method="GET" action="/">
+            <input name="hash" id="input-search">
+            <button type="submit" class="btn btn-primary">GO</button>
+        </form>
+ <input type="radio" name="opt" value="tweets"  onchange="changeAction('tweets');">  tweets
+ <input type="radio" name="opt" value="hashtag" onchange="changeAction('hashtag');" > hashtag
+ <input type="radio" name="opt" value="user"    onchange="changeAction('user');"> user
+    </div>
+

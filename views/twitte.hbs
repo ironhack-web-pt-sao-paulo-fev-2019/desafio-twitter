@@ -1,0 +1,36 @@
+<table >
+
+  <tr>
+      <td>
+        <div class="item-container">
+            <div class="item-left">
+                <div class="item-photo">
+ <img alt="" class="User-profileImage" src="{{user.photo}}" width="50%"><br><div class="name-item-left"><strong>{{user.name}}</strong></div>
+                                                                              
+                </div>
+            </div>
+        </div>
+      </td>
+      <td>
+<div class="post-message">
+ <img alt="" class="User-profileImage" src="{{user.photo}}">
+
+ <form action="/post-twitter" method="post">
+
+    <textarea name="text" id="text-area" cols="80"rows="5"wrap="off" style="scrollbar-arrow-color:pink;scrollbar-base-color:red;scrollbar-darkshadow-color:blue;scrollbar-highlightcolor:orange;scrollbar-shadow-color:green">
+
+    </textarea>
+
+<br>
+    <input type="submit"  class="btn-tweet" value="Tweet">
+    
+ </form>
+</div>
+
+      </td>
+  </tr>
+</table>
+
+
+
+
