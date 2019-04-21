@@ -1,5 +1,10 @@
 const express = require('express');
+const hbs = require('hbs');
+
 const app = express();
+
+app.set('view_engine', 'hbs');
+app.set('views', `${__dirname}/views`);
 
 // Rotas públicas (acesso sem autenticação)
 app.get('/', (request, response) => {
