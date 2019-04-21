@@ -20,7 +20,7 @@ Importante: Você deverá proteger suas credenciais. Elas não podem aparecer em
 É extremamente importante que você leia a documentação dos módulos  [twitter](https://www.npmjs.com/package/twitter), [dotenv](https://www.npmjs.com/package/dotenv) e passport antes de começar a colocar a mão na massa.
 
 
-## Instruções para credenciamento de desenvolvedor no `The New York Times`
+## Instruções para credenciamento de desenvolvedor no `Twitter`
 
 ### Credenciamento na api do Twitter:
 
