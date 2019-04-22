@@ -10,6 +10,7 @@ app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + "/views/partials");
 
 // Configuração do twitter Client. 
+// Você pode obter os valores das chaves em: https://developer.twitter.com/en/apps
 // As variáveis abaixo devem estar no arquivo '.env', na raiz deste projeto
 // como seguinte formato:
 // TWITTER_CONSUMER_KEY=(consumer_key da sua aplicação, fornecida pelo twitter)
