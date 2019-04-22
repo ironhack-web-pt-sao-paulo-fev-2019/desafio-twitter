@@ -3,19 +3,6 @@
 
 <ul>
 {{#each posts}}
-  <li><img src="{{ this.user.profile_image_url }}" alt="{{ this.user.name }}"/>
-    <strong>{{ this.user.name }}</strong>
-    <p>{{ this.text }}</p>
-    <p>{{this.created_at}}</p>
-    {{#if this.retweeted_status }}
-    <ul>
-      <li>
-        <img src="{{ this.retweeted_status.user.profile_image_url }}" alt="{{ this.retweeted_status.user.name }}"/>
-        <strong>{{ this.retweeted_status.user.name }}</strong>
-        <p>{{ this.retweeted_status.text }}</p>
-      </li>
-    </ul>
-    {{/if}}
-  </li>
+  {{>tweetPost}}
 {{/each}}
 </ul>

@@ -1,0 +1,10 @@
+<li>
+  {{>tweet}}
+  {{#if this.retweeted_status }}
+  <ul>
+    <li>
+      {{>tweet this.retweeted_status}}
+    </li>
+  </ul>
+  {{/if}}
+</li>
