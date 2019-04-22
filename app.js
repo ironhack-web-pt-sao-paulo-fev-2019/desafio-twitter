@@ -33,17 +33,23 @@ app.get('/', (request, response) => {
 
 app.get('/search-results', (request, response) => {
   const query = request.query.query;
-  // aqui deve ter o código para buscar no twitter por *query* (sem asterisco)
-  // o resultado deve ser guardado na variável abaixo e, sem seguida, passada para ser renderizado como resultado
+  // código da busca no twitter por *query* (sem asterisco)
   twitterClient.get('search/tweets', { q: query }, (error, tweets) => {
+    // Segundo documentação da api do twitter (https://developer.twitter.com/en/docs/tweets/search/quick-start/premium-30-day), 
+    // esta (rota) retorna um objeto tweet.statuses com os posts
     const { statuses } = tweets;
+    // renderizando nosso resultado de busca
     response.render('search-results', { query, posts: statuses } );
   });
 });
 
 app.get('/user/:username', (request, response) => {
-  const { username } = request.params;
-  response.send(`Esta é a rota com os twits do usuário ${username}.`);
+  const { username } = request.params;  
+  // Mais detalhes do resultado em: https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-user_timeline.html
+  // O código abaixo retorna a lista de posts da timeline de um usuário
+  twitterClient.get('statuses/user_timeline', { screen_name: username }, (error, tweets) => {
+    response.render('user-profile', { username, posts: tweets } );
+  });
 });
 
 // Rotas privadas (acessa apenas para quem está autenticado)
