@@ -15,6 +15,10 @@ const auth = require('./routes/auth');
 const post = require('./routes/post-twitte');
 const Twitter = require('twitter');
 const app = express();
+require('dotenv')
+.config({
+    path: path.resolve(process.cwd(),'../environment/.env')
+});
 
 
 mongoose.Promise = global.Promise;
@@ -45,10 +49,10 @@ app.use('/post-twitter',post);
 
 var client = new Twitter({
 
-  consumer_key: 'HaNje53ElEIdzzDYCZFBFLUqW',
-  consumer_secret: 'ejaSo0aNXt6r1O1p13XRWoFU2FxMVek4vjM9ga9qnWyVnAptMh',
-  access_token_key: '1119382765282234368-gzZXjxlrdCaqMSasfxonv1thHC4LBj',
-  access_token_secret: 'qJ0JorHyDDD7mXotXlDN10lzI5M9XpSZus03cFlU2c11i'
+  consumer_key: process.env.consumer_key,
+  consumer_secret:process.env.consumer_secret ,
+  access_token_key:consumer_secret.access_token_key ,
+  access_token_secret: access_token_key.access_token_secret
      
 });
 
