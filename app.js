@@ -1,9 +1,10 @@
 const express = require('express'),
     app = express(),
     hbs = require('hbs'),
-    Twitter = require('twitter');
-    
-    require('dotenv').config();
+    Twitter = require('twitter'),
+    authRoutes = require('./routes/auth-routes');
+
+require('dotenv').config();
 
 // SET UP
 app.set('view engine', 'hbs');
@@ -11,9 +12,8 @@ app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
 hbs.registerPartials(__dirname + '/views/partials');
 
-// DOTENV
-
-
+// SET UP ROUTES
+app.use('/auth', authRoutes);
 
 // ROUTES
 app.get('/', (req, res) => {
@@ -33,13 +33,27 @@ var client = new Twitter({
 
 app.get('/result', function (req, res, next) {
 
+    var filter = req.query.filter;
     var query = req.query.keyword;
 
-    client.get('search/tweets', { q: query }, function (error, tweets, response) {
-        const arraySearch = tweets.statuses;
-
-        res.send(JSON.stringify(arraySearch));
-    });
+    if (filter == 'twit') {
+        client.get('search/tweets', { q: query }, function (error, tweets, response) {
+            var data = tweets.statuses;
+            console.log(data);
+            res.render('result', { data });
+        });
+    } else if (filter == 'user') {
+        client.get('users/search.json', { q: query }, function (error, user, response) {
+            console.log(user);
+            res.render('result', { user });
+        });
+    } else if (filter == 'hashtag') {
+        client.get('search/tweets', { q: query }, function (error, tweets, response) {
+            var data = tweets.statuses;
+            console.log(data);
+            res.render('result', { data });
+        });
+    }
 
 });
 
