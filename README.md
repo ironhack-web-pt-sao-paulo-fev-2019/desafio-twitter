@@ -10,7 +10,7 @@ Para este projeto, você deverá utilizar:
 - Módulo [twitter](https://www.npmjs.com/package/twitter);
 - `.gitignore` para evitar que alguns arquivos ou pastas sejam versionados; 
 - [handlebars](https://handlebarsjs.com/), para as views;
-- Api de notícias do `Twitter`
+- Api do `Twitter`
 
 Importante: Você deverá proteger suas credenciais. Elas não podem aparecer em seu código no github, para isso, utilize os arquivos:
 
@@ -20,7 +20,7 @@ Importante: Você deverá proteger suas credenciais. Elas não podem aparecer em
 É extremamente importante que você leia a documentação dos módulos  [twitter](https://www.npmjs.com/package/twitter), [dotenv](https://www.npmjs.com/package/dotenv) e passport antes de começar a colocar a mão na massa.
 
 
-## Instruções para credenciamento de desenvolvedor no `The New York Times`
+## Instruções para credenciamento de desenvolvedor no `Twitter`
 
 ### Credenciamento na api do Twitter:
 
@@ -37,4 +37,4 @@ https://developer.twitter.com/
 
 O projeto deve seguir o diagrama abaixo, conforme conversamos em sala de aula:
 
-
+![Fluxo](https://github.com/ironhack-web-pt-sao-paulo-fev-2019/desafio-twitter/blob/master/doc/images/diagrama-twitter.png)
