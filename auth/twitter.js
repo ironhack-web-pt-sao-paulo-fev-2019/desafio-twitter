@@ -15,7 +15,7 @@ passport.deserializeUser(function (id, fn) {
 passport.use(new TwitterStrategy({
     consumerKey: "HaNje53ElEIdzzDYCZFBFLUqW",
     consumerSecret:"ejaSo0aNXt6r1O1p13XRWoFU2FxMVek4vjM9ga9qnWyVnAptMh",
-    callbackURL: "http://iron-twitter.herokuapp.com/auth/twitter/callback"
+    callbackURL: "https://iron-twitter.herokuapp.com/auth/twitter/callback"
   },
   function(accessToken, refreshToken, profile, done) {
 
