@@ -17,7 +17,7 @@ const Twitter = require('twitter');
 const app = express();
 require('dotenv')
 .config({
-    path: path.resolve(process.cwd(),'../environment/.env')
+    path: path.resolve(process.cwd(),'./environment/.env')
 });
 
 
@@ -47,12 +47,13 @@ app.use('/users', users);
 app.use('/auth', auth);
 app.use('/post-twitter',post);
 
+
 var client = new Twitter({
 
   consumer_key: process.env.consumer_key,
   consumer_secret:process.env.consumer_secret ,
-  access_token_key:consumer_secret.access_token_key ,
-  access_token_secret: access_token_key.access_token_secret
+  access_token_key:process.env.access_token_key ,
+  access_token_secret: process.env.access_token_secret
      
 });
 
@@ -102,7 +103,9 @@ app.get('/list-all', (req,res,next) => {
  client.get('statuses/user_timeline.json', {screen_name: query}, function(error, tweets, response) {
   const {id,userid,photo} = req.session.passport.user.doc;
     const arrayTweets= tweets
-   res.render('twitte',{arrayTweets:arrayTweets,user: req.user,photo:photo,userid:userid})
+
+    //res.send(arrayTweets)
+    res.render('twitte',{arrayTweets:arrayTweets,user: req.user,photo:photo,userid:userid})
 
    
    });
