@@ -50,6 +50,7 @@ app.get('/user/:username', (request, response) => {
 
 // Rotas privadas (acessa apenas para quem está autenticado)
 
+// (AQUI DEVEM FICAR AS ROTAS PRIVADAS... BOA SORTE!)
 
 // Inicialização do servidor
 app.listen(3000, (error) => {
