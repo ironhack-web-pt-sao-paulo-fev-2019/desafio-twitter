@@ -11,13 +11,8 @@ hbs.registerPartials(__dirname + "/views/partials");
 
 // Configuração do twitter Client. 
 // Você pode obter os valores das chaves em: https://developer.twitter.com/en/apps
-// As variáveis abaixo devem estar no arquivo '.env', na raiz deste projeto
-// como seguinte formato:
-// TWITTER_CONSUMER_KEY=(consumer_key da sua aplicação, fornecida pelo twitter)
-// TWITTER_CONSUMER_SECRET=(consumer_secret da sua aplicação)
-// TWITTER_ACCESS_TOKEN_KEY=(access_token_key da sua aplicação)
-// TWITTER_ACCESS_TOKEN_SECRET=(acces_token_secret da sua aplicação)
-
+// As variáveis abaixo devem estar no arquivo '.env', na raiz deste projeto.
+// O projeto tem um arquivo '.env.example' que você pode tomar como base (e depois renomear para .env)
 const twitterClient = new Twitter({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
   consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
