@@ -1,5 +1,6 @@
 const express = require('express');
 const hbs = require('hbs');
+require('dotenv').config()
 const Twitter = require('twitter');
 
 const app = express();
@@ -15,7 +16,7 @@ app.set('view engine', 'hbs');
 // TWITTER_ACCESS_TOKEN_KEY=(access_token_key da sua aplicação)
 // TWITTER_ACCESS_TOKEN_SECRET=(acces_token_secret da sua aplicação)
 
-var client = new Twitter({
+const twitterClient = new Twitter({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
   consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
   access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
@@ -33,8 +34,10 @@ app.get('/search-results', (request, response) => {
   const query = request.query.query;
   // aqui deve ter o código para buscar no twitter por *query* (sem asterisco)
   // o resultado deve ser guardado na variável abaixo e, sem seguida, passada para ser renderizado como resultado
-  const result = {};
-  response.render('search-results', { query, result } );
+  twitterClient.get('search/tweets', { q: query }, (error, tweets) => {
+    const { statuses } = tweets;
+    response.render('search-results', { query, posts: statuses } );
+  });
 });
 
 app.get('/user/:username', (request, response) => {
