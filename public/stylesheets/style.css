@@ -46,11 +46,29 @@ background-size:24%;
 
 }
 
+.btn-tweet-search{
+
+  background-color: #1da1f2;
+  border: 1px solid #1da1f2;
+  color: #fff;
+  border-radius: 100px;
+  box-shadow: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 20px;
+  padding: 6px 16px;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  margin-left:0px;
+}
+
 .form-tny{
 
-display: flex;
-justify-content: center;
-align-items: center;
+margin-top:140px;
+margin-left: 390px;
+width: 50%;
 height: 200px;
 
 }
@@ -243,6 +261,25 @@ height: 15px;
   text-align: center;
   white-space: nowrap;
   margin-left:600px;
+
+}
+
+.btn-tweet-delete{
+  background-color: #e0245e;
+  border: 1px solid #e0245e;
+  color: #fff;
+  border-radius: 100px;
+  box-shadow: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 17px;
+  padding: 6px 16px;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  margin-left:530px;
+
 
 }
 .name-item-left{
@@ -10588,4 +10625,14 @@ a.User-infoLink:focus .User-nameText {
    margin-left: 15px; 
    border-radius:15px;
 
+}
+
+.post-message-list{
+
+  background: white;
+  display:flex;
+  border-radius: 1px;
+  margin-left:350px;
+  margin-top:2px;
+  width:51%;
 }

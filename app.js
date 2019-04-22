@@ -53,28 +53,61 @@ var client = new Twitter({
 });
 
 
+app.post('/post-destroy',(req,res,next) => {
 
+   const idPost = req.body.idPost;
+   
+  client.post(`statuses/destroy/${idPost}.json`,function(error, tweets, response){
+  
+  client.get('statuses/user_timeline.json', {screen_name: req.username}, function(error, tweets, response) {
+  const {id,userid,photo} = req.session.passport.user.doc;
+    const arrayTweets= tweets
+   res.render('twitte',{arrayTweets:arrayTweets,user: req.user,photo:photo,userid:userid})
+
+   
+   });
+
+  })
+
+})
 
 app.post('/post-twitter',(req,res,next) =>{
 
   client.post('statuses/update', {status:req.body.text})
     .then(function (tweet) {
-     res.render('users',{tweet})
+      client.get('statuses/user_timeline.json', {screen_name: req.username}, function(error, tweets, response) {
+        const {id,userid,photo} = req.session.passport.user.doc;
+          const arrayTweets= tweets
+         res.render('twitte',{arrayTweets:arrayTweets,user: req.user,photo:photo,userid:userid})
+        });
     })
     .catch(function (error) {
       throw error;
     })
 
-
+    
 })  
 
 
+app.get('/list-all', (req,res,next) => {
+ 
+
+  const query = req.username
+
+
+ client.get('statuses/user_timeline.json', {screen_name: query}, function(error, tweets, response) {
+  const {id,userid,photo} = req.session.passport.user.doc;
+    const arrayTweets= tweets
+   res.render('twitte',{arrayTweets:arrayTweets,user: req.user,photo:photo,userid:userid})
+
+   
+   });
+   
+
+});
+
 app.get('/post', function(req, res, next) {
-
-  const {id,userid} = req.session.passport.user.doc;
-
-   res.render('twitte',{ user: req.user,photo:req.photo,userid:userid});
-
+   res.redirect('/list-all')
 
 });
 
@@ -92,10 +125,11 @@ app.get('/tweets', function(req, res, next) {
      const query = req.query.hash
 
     client.get('search/tweets', {q:query}, function(error, tweets, response) {
+      const {id,userid} = req.session.passport.user.doc;
         const arraySearch = tweets.statuses
 
         //res.send(arraySearch);
-        res.render('search',{arraySearch})
+        res.render('search',{arraySearch,user: req.user,photo:req.photo,userid:userid})
      });
      
   });
@@ -104,12 +138,15 @@ app.get('/tweets', function(req, res, next) {
 
     const query = req.query.hash
     client.get('users/search.json', {q: query}, function(error, tweets, response) {
+      const {id,userid} = req.session.passport.user.doc;
       const arraySearch = tweets
-     res.render('userSearch',{arraySearch})
+     res.render('userSearch',{arraySearch,user: req.user,photo:req.photo,userid:userid})
      // res.send(arraySearch)
      });
      
   });
+
+
 
 
 // catch 404 and forward to error handler

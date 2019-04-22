@@ -1,0 +1,14 @@
+<div class="post-message-list">
+ <img alt="" class="User-profileImage" src="{{user.photo}}">
+
+ <form action="/post-destroy" method="post">
+
+ <div class="message-partials">
+ {{text}}
+</div>
+ <input type="hidden" name="idPost" value="{{id_str}}">
+<br>
+    <input type="submit"  class="btn-tweet-delete" value="Delete">
+    
+ </form>
+</div>

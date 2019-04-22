@@ -25,11 +25,18 @@
     <input type="submit"  class="btn-tweet" value="Tweet">
     
  </form>
+ <br>
+     
+
 </div>
 
       </td>
   </tr>
 </table>
+
+{{#each arrayTweets }}
+     {{>listTweets this}}
+      {{/each}}
 
 
 
