@@ -30,7 +30,8 @@
     
  </form>
  <br>
-     
+   
+
 
 </div>
 
@@ -39,6 +40,13 @@
       </td>
   </tr>
 </table>
+
+     {{#each arrayTweets }}
+     {{>listTweets this}}
+      {{/each}}
+    
+
+
 
  <div class="div-left">
   <div class="text-heig">
@@ -67,9 +75,7 @@
   </div>
 
  </div>
-{{#each arrayTweets }}
-     {{>listTweets this}}
-      {{/each}}
+
 
 <div class="div-Heigth">
 

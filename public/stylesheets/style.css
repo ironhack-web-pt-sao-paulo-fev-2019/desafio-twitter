@@ -10636,9 +10636,11 @@ a.User-infoLink:focus .User-nameText {
   display:flex;
   border-radius: 1px;
   margin-left:268px;
-  margin-top:-100px;
+  margin-top:0px;
   width:59%;
 }
+
+
 .post-message-head-color{
 
   background: #e8f5fd;
@@ -10668,7 +10670,7 @@ a.User-infoLink:focus .User-nameText {
   height: 400px;
   width:18.5%;
   margin-left:1039px;
-  margin-top:-609px;
+  margin-top:-607px;
 }
 
 .text-heig{
