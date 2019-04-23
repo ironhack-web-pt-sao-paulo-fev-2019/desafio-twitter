@@ -1,0 +1,14 @@
+<nav>
+    <div class="box-nav">
+        <a href="/"><img src="img/twitter-logo-1-1.png"></a>
+        <ul>
+            <li><a href="/">Home</a></li>
+            {{#if user}}
+            <li><a href="/logout">Logout</a></li>
+            <img src="{{user.thumbnail}}">
+            {{else}}
+            <li><a href="/auth/twitter">Sign in with Twitter</a></li>
+            {{/if}}
+        </ul>
+    </div>
+</nav>

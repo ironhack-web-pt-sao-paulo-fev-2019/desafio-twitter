@@ -3,7 +3,8 @@ const mongoose = require('mongoose'),
 
 const userSchema = new Schema({
     username: String,
-    twitterId: String
+    twitterId: String,
+    thumbnail: String
 });
 
 const User = mongoose.model('user', userSchema);

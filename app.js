@@ -36,13 +36,15 @@ passport.use(new TwitterStrategy({
 },
     function (token, tokenSecret, profile, done) {
         User.findOne({twitterId: profile.id}).then((currentUser) => {
+            console.log(profile.photos[0].value)
             if(currentUser){
                 console.log(`User is: ${currentUser}`);
                 done(null, currentUser);
             } else {
                 new User({
                     username: profile.displayName,
-                    twitterId: profile.id
+                    twitterId: profile.id,
+                    thumbnail: profile.photos[0].value
                 }).save().then((newUser) => {
                     console.log('new user created:' + newUser);
                     done(null, newUser);
@@ -64,11 +66,6 @@ passport.deserializeUser(function (id, done) {
 
 // SET UP PASSPORT ROUTES
 
-// auth login
-app.get('/login', (req, res) => {
-    res.render('login');
-});
-
 // auth logout
 app.get('/logout', (req, res) => {
     //handle with passport
@@ -84,13 +81,13 @@ passport.authenticate('twitter', { failureRedirect: '/' }),
 function (req, res) {
     // Successful authentication, redirect home.
     // var user = req.user;
-    // res.send(user);
+    // console.log(user);
     res.redirect('/profile');
 });
 
 // ROUTES
 app.get('/', (req, res) => {
-    res.render('index');
+    res.render('index', {user:req.user});
 })
 
 const authCheck = (req, res, next) => {
@@ -102,7 +99,6 @@ const authCheck = (req, res, next) => {
 }
 
 app.get('/profile', authCheck, (req, res) => {
-    console.log(req.user.username)
     res.render('profile', {user:req.user});
 })
 
@@ -125,18 +121,16 @@ app.get('/result', function (req, res, next) {
     if (filter == 'twit') {
         client.get('search/tweets', { q: query }, function (error, tweets, response) {
             var data = tweets.statuses;
-            console.log(data);
             res.render('result', { data });
         });
     } else if (filter == 'user') {
         client.get('users/search.json', { q: query }, function (error, user, response) {
-            console.log(user);
-            res.render('result', { user });
+            var dataUser = user;
+            res.render('result', { dataUser });
         });
     } else if (filter == 'hashtag') {
         client.get('search/tweets', { q: query }, function (error, tweets, response) {
             var data = tweets.statuses;
-            console.log(data);
             res.render('result', { data });
         });
     }
