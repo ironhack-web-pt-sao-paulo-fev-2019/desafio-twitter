@@ -36,6 +36,7 @@ app.get('/logoff',
 
 app.get('/', (request, response) => {
   response.render('index');
+  console.log(request);
 });
 
 app.get('/loged', (request, response) => {

@@ -2,7 +2,7 @@ let button = document.getElementById('btn1');
 button.addEventListener('click', function (event) {
   let queryValue = document.getElementsByName('exampleRadios');
   let checked = getRadioVal(queryValue, 'exampleRadios');
-  
+  app.post('search-results', checked);
 });
 
 function getRadioVal(form) {
@@ -15,3 +15,4 @@ function getRadioVal(form) {
   }
   return val;
 }
+
