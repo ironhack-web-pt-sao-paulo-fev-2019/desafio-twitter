@@ -41,12 +41,6 @@
   </tr>
 </table>
 
-     {{#each arrayTweets }}
-     {{>listTweets this}}
-      {{/each}}
-    
-
-
 
  <div class="div-left">
   <div class="text-heig">
@@ -101,3 +95,11 @@
 </div>
 
 
+<div class="center-post"> 
+
+     {{#each arrayTweets }}
+     <li style="list-style-type: none;padding-bottom:2px;"> {{>listTweets this}} </li>
+      {{/each}}
+
+
+</div>

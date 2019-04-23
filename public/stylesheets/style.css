@@ -10631,7 +10631,7 @@ a.User-infoLink:focus .User-nameText {
 }
 
 .post-message-list{
-
+ 
   background: white;
   display:flex;
   border-radius: 1px;
@@ -10687,4 +10687,10 @@ a.User-infoLink:focus .User-nameText {
   overflow: hidden;
   font-weight: normal;
   font-size: 13px
+}
+
+.center-post{
+  margin-top:-300px;
+ 
+
 }
