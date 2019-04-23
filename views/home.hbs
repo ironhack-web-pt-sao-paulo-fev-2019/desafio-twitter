@@ -15,48 +15,39 @@
   <title>App-Twitter</title>
 </head>
 <body>
-
-
-
- <div class="header">
+<div class="header">
 <div class="header__container">
 <div class="header__inner">
 <div class="header__left">
 <a class="logo" href="/" title="Home">
 <span class="Icon Icon--logo Icon--large"></span></a>
-
 <nav>
-     {{#if userid}}
 <li><a href="https://developer.twitter.com/en.html" title="App-IronTweet">App-IronTweet</a>
 </li>
 
-<li class="menu__link " aria-activedescendant="" aria-expanded="false" aria-haspopup="true" aria-controls="">
-<span class="no-highlight no-cursor-style"><a href="/post">Post Tweet</a></span></li>
-<li class="menu__link " aria-activedescendant="" aria-expanded="false" aria-haspopup="true" aria-controls="">
-  <span class="no-highlight no-cursor-style"><a href="/home">Search</a> </span></li><li class="menu__link " aria-activedescendant="" aria-expanded="false" aria-haspopup="true" aria-controls="">
-<span class="no-highlight no-cursor-style">Docs</span></li>
-<li class="menu__link " aria-activedescendant="" aria-expanded="false" aria-haspopup="true" aria-controls=""><span class="no-highlight no-cursor-style">More</span></li>
-</nav></div><div class="header__right">
+</nav>
+</div>
+<div class="header__right">
 <nav>
- 
-<li><a title="logout" href="/auth/logout">logout</a></li>
-{{else}}
-<li><a title="login" href="/auth/twitter">login</a></li>
+<li>
+    <a title="login" href="/auth/twitter">login</a></li>
 
-<li class="menu__link " aria-activedescendant="" aria-expanded="false" aria-haspopup="true" aria-controls="">
-  <span class="no-highlight no-cursor-style">{{user.name}}</span>
+    
+    <li aria-activedescendant="" aria-expanded="false" aria-haspopup="false" aria-controls="">
   
-  </nav>
-  <nav>
-  <li class="menu__link account__nav" aria-activedescendant="" aria-expanded="false" aria-haspopup="true" aria-controls="">
-    <span class="no-highlight no-cursor-style">
       
   <div class="header__account">
-    <img alt="" class="User-profileImage" src="{{user.photo}}">
-    </div></span></li></nav></div></div></div></div>
-    {{/if}}  
-
+    <img alt="" class="User-profileImage" src="https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png">
+    </div>
   
+  </li>
+  </nav>
+  
+    </div>
+    </div>
+    </div>
+    </div>
+    
   {{{ body }}}
 
 

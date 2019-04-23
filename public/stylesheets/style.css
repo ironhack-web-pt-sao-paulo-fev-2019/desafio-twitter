@@ -278,7 +278,7 @@ height: 15px;
   position: relative;
   text-align: center;
   white-space: nowrap;
-  margin-left:530px;
+  margin-left:617px;
 
 
 }
@@ -10259,9 +10259,12 @@ tr.is-hover .Table-cellQuickActionGroup {
   align-items: start;
   font-size: 0.7rem;
 }
+
+
 .User-profileImage {
   align-self: flex-start;
   flex-shrink: 0;
+  margin-top: 5px;
 }
 img.User-profileImage,
 .User-profileImage img {
@@ -10632,7 +10635,54 @@ a.User-infoLink:focus .User-nameText {
   background: white;
   display:flex;
   border-radius: 1px;
-  margin-left:350px;
-  margin-top:2px;
-  width:51%;
+  margin-left:268px;
+  margin-top:-100px;
+  width:59%;
+}
+.post-message-head-color{
+
+  background: #e8f5fd;
+  width: 100%;
+  height:10;
+  margin-top: -113px;
+  margin-left: 5px
+ 
+}
+
+.table-tall{
+
+  margin-top: -30px;
+}
+.div-left{
+
+  background: white;
+  height: 400px;
+  width:18.5%;
+  margin-left:21px;
+  margin-top:5px;
+}
+
+.div-Heigth{
+
+  background: white;
+  height: 400px;
+  width:18.5%;
+  margin-left:1039px;
+  margin-top:-609px;
+}
+
+.text-heig{
+
+  padding: 5px;
+ 
+  
+}
+
+.item-stats {
+
+  color:#657786;
+  max-height: 51px;
+  overflow: hidden;
+  font-weight: normal;
+  font-size: 13px
 }

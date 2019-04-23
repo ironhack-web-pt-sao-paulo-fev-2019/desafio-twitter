@@ -23,9 +23,10 @@ require('dotenv')
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb+srv://wilkor:ju@210322@cluster0-mm5tk.mongodb.net/node-passport-social', { useMongoClient: true })
-  .then(() =>  console.log('connection successful'))
-  .catch((err) => console.error(err));
+mongoose.connect('mongodb://127.0.0.1:27017/node-passport-social', { useMongoClient: true })
+.then(() =>  console.log('connection successful'))
+ .catch((err) => console.error(err)); 
+
 
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({extended:true}))

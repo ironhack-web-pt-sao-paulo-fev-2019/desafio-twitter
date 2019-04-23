@@ -1,23 +1,27 @@
-<table >
+
+<table class="table-tall">
 
   <tr>
       <td>
+       
         <div class="item-container">
             <div class="item-left">
                 <div class="item-photo">
- <img alt="" class="User-profileImage" src="{{user.photo}}" width="50%"><br><div class="name-item-left"><strong>{{user.name}}</strong></div>
+       <img alt="" class="User-profileImage" src="{{user.photo}}" width="50%"><br><div class="name-item-left"><strong>{{user.name}}</strong></div>
                                                                               
                 </div>
             </div>
         </div>
+       
       </td>
       <td>
+ <div class="post-message-head-color">
 <div class="post-message">
  <img alt="" class="User-profileImage" src="{{user.photo}}">
 
  <form action="/post-twitter" method="post">
 
-    <textarea name="text" id="text-area" cols="80"rows="5"wrap="off" style="scrollbar-arrow-color:pink;scrollbar-base-color:red;scrollbar-darkshadow-color:blue;scrollbar-highlightcolor:orange;scrollbar-shadow-color:green">
+    <textarea name="text" id="text-area" cols="80"rows="2"wrap="off" style="scrollbar-arrow-color:pink;scrollbar-base-color:red;scrollbar-darkshadow-color:blue;scrollbar-highlightcolor:orange;scrollbar-shadow-color:green">
 
     </textarea>
 
@@ -30,14 +34,64 @@
 
 </div>
 
+</div>
+
       </td>
   </tr>
 </table>
 
+ <div class="div-left">
+  <div class="text-heig">
+<h4>Trends for you</h4>
+<a href="#">#SouOriginal</a><br>
+<span class="item-stats">Você é Original. Esse banco é seu.
+ Promoted by Banco Original</span>
+
+<a href="#">#DiaMundialDoLivro</a><br>
+<a href="#">#SalveJorge</a><br>
+<span class="item-stats">23 de abril é dia de São Jorge; 
+  na umbanda, santo é sincretizado com Ogum</span>
+<a href="#">#BrasilExigeReformaCCJ
+23.7K Tweets
+<a href="#">#DiscutindoaRouanet</a><br>
+<a href="#">#TercaDetremuraSDV</a><br>
+11.1K Tweets
+<a href="#">#DiaDoLivro</a><br><br>
+<a href="#"><a href="#">#LulaLivreTercaSDV
+4,352 Tweets
+<a href="#">#Lemonade</a><br>
+<span class="item-stats">A gente está assim vendo o 'Lemonade' nos serviços de streaming</span>
+<a href="#">#FazUmTempoQueEuNão</a><br>
+4,080 Tweets
+  
+  </div>
+
+ </div>
 {{#each arrayTweets }}
      {{>listTweets this}}
       {{/each}}
 
+<div class="div-Heigth">
 
+
+  <div class="text-heig">
+  <h4>Who to follow </h4><br>
+  <img alt="" class="User-profileImage"  width="24%" src="https://pbs.twimg.com/profile_images/997269922068623360/JOcHsBav_bigger.jpg">
+  <a href="">#economia</a>
+  <hr>
+  </div>
+    <div class="text-heig">
+  <img alt="" class="User-profileImage" width="24%" src="https://pbs.twimg.com/profile_images/1059241482710929410/7jU0V1mA_bigger.jpg">
+  <a href="">#acabeicomSãoPaulo</a>
+  <hr>
+  </div>
+    <div class="text-heig">
+  <img alt="" class="User-profileImage" width="24%"src="https://pbs.twimg.com/profile_images/910987463316967424/6s0s7S0T_200x200.jpg">
+  <a href="">#estouorgulhosodoWill</a>
+  <hr>
+  </div>
+  
+ 
+</div>
 
 
