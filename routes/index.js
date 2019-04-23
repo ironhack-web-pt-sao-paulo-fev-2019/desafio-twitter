@@ -9,13 +9,13 @@ const cookieParser = require('cookie-parser');
 const api = 'https://api.twitter.com/1.1/search/tweets.json';
 const twitter = require('twitter');
 const dotEnv = require('dotenv').config();
+
 const twit = new twitter({
   consumer_key: dotEnv.parsed.consumerKey,
   consumer_secret: dotEnv.parsed.consumerSecret,
   access_token_key: dotEnv.parsed.accessToken,
   access_token_secret: dotEnv.parsed.acessSecret,
 });
-
 
 app.use(cookieParser());
 app.use(passport.initialize());
@@ -51,7 +51,9 @@ app.get('/login', (request, response) => {
 });
 
 app.get('/search-results', (request, response) => {
-  twit.get('search/tweets', {q:'nodejs'}, function(error, tweets, res) {
+  twit.get('search/tweets', {
+    q: 'nodejs'
+  }, function (error, tweets, res) {
     response.render('search-results', tweets.statuses);
   });
 });
