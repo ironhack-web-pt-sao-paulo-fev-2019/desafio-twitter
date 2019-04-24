@@ -1,6 +1,6 @@
 # Desafio Twitter
 
-Neste projeto, você deverá entregar um site de gerenciamento de twits. A fonte de dados será o site do `Twitter`.
+Neste projeto, você deverá entregar um site de gerenciamento de tweets. A fonte de dados será o site do `Twitter`.
 
 ## Pré-requisitos
 
