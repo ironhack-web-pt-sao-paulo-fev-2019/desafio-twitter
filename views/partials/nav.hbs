@@ -5,7 +5,7 @@
             <li><a href="/">Home</a></li>
             {{#if user}}
             <li><a href="/logout">Logout</a></li>
-            <img src="{{user.thumbnail}}">
+            <a href="/profile"><img src="{{user.thumbnail}}"></a>
             {{else}}
             <li><a href="/auth/twitter">Sign in with Twitter</a></li>
             {{/if}}

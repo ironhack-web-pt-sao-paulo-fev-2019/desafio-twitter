@@ -64,6 +64,9 @@ nav ul img {
 form {
     display: flex;
     flex-direction: column;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 20px;
 }
 
 form ul {
@@ -74,5 +77,26 @@ form ul {
 }
 
 form .input-text {
+    margin-top: 10px;
     height: 30px;
+    border: 1px solid #30aae1;
+}
+
+form button {
+    background: #30aae1;
+    color: #ffffff;
+    border: none;
+    height: 30px;
+}
+
+.box-result {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.box-username {
+    width: 15%;
+    background-color: #ffffff;
+    margin: 10px;
+    padding: 10px;
 }

@@ -36,7 +36,6 @@ passport.use(new TwitterStrategy({
 },
     function (token, tokenSecret, profile, done) {
         User.findOne({twitterId: profile.id}).then((currentUser) => {
-            console.log(profile.photos[0].value)
             if(currentUser){
                 console.log(`User is: ${currentUser}`);
                 done(null, currentUser);
@@ -55,7 +54,7 @@ passport.use(new TwitterStrategy({
 ));
 
 passport.serializeUser(function (user, done) {
-    done(null, user.id);
+    done(null, user);
 })
 
 passport.deserializeUser(function (id, done) {
@@ -117,21 +116,22 @@ app.get('/result', function (req, res, next) {
 
     var filter = req.query.filter;
     var query = req.query.keyword;
+    let user = req.session.passport.user;
 
     if (filter == 'twit') {
         client.get('search/tweets', { q: query }, function (error, tweets, response) {
-            var data = tweets.statuses;
-            res.render('result', { data });
+            let data = tweets.statuses;            
+            res.render('result', { data, user });
         });
     } else if (filter == 'user') {
-        client.get('users/search.json', { q: query }, function (error, user, response) {
-            var dataUser = user;
-            res.render('result', { dataUser });
+        client.get('users/search.json', { q: query }, function (error, username, response) {
+            let dataUser = username;
+            res.render('result', { dataUser, user });
         });
     } else if (filter == 'hashtag') {
         client.get('search/tweets', { q: query }, function (error, tweets, response) {
-            var data = tweets.statuses;
-            res.render('result', { data });
+            let data = tweets.statuses;
+            res.render('result', { data, user });
         });
     }
 
